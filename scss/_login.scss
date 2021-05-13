@@ -1,0 +1,52 @@
+// Login Form Wrapper
+
+.login__form {
+  width: 40%;
+  margin: 0 auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input,
+    textarea,
+    button,
+    select,
+    option {
+      border: 1px solid #e7eaed;
+      box-sizing: border-box;
+      padding: 0.35rem;
+      border-radius: 4px;
+      margin-bottom: 2.5vh;
+      color: #212121;
+      font-weight: 500;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 5rem;
+    }
+
+    button {
+      padding: 0.35rem;
+      width: 25%;
+      cursor: pointer;
+      transition: 0.25s ease-in-out;
+
+      &:hover {
+        background-color: #22a45a;
+        color: #fff;
+      }
+    }
+  }
+
+  span {
+    font-size: 0.85rem;
+
+    a {
+      color: #22a45a;
+      text-decoration: underline;
+    }
+  }
+}
