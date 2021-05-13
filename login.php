@@ -18,19 +18,23 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-      $data = mysqli_fetch_row($result);
-      $db_pass = $data[1];
-      $id = $data[0];
+      if (mysqli_num_rows($result) > 0) {
+        $data = mysqli_fetch_row($result);
+        $db_pass = $data[1];
+        $id = $data[0];
 
-      if (password_verify($password, $db_pass)) {
-        $_SESSION['user_id'] = $id;
-        echo "<script>
+        if (password_verify($password, $db_pass)) {
+          $_SESSION['user_id'] = $id;
+          echo "<script>
                 alert('Logged In Successfully! Redirecting you home...');
                 setTimeout(() => {
                   window.location.href = 'index.php';
                 }, 750)
               </script>";
-      } else $errors['password'] = "Wrong Password";
+        } else $errors['password'] = "Wrong Password";
+      } else {
+        $errors['email'] = "Email doesn't exist";
+      }
     }
   } else $errors['email'] = "Email doesn't exist";
 }
@@ -42,6 +46,16 @@ if (isset($_POST['submit'])) {
     <input type="email" name="email" placeholder="Enter Your Email..." />
     <input type="password" name="password" placeholder="Enter Your Password..." />
     <button type="submit" name="submit">Login</button>
+    <?php if (!empty($errors)) : ?><div class="errors__wrapper">
+        <?php foreach ($errors as $error_type => $error) : ?>
+          <p>
+            <?php if ($errors["$error_type"]) : ?>
+              <?php echo ucfirst($error_type) . " Error: " . $error; ?>
+            <?php endif ?>
+          </p>
+        <?php endforeach ?>
+      </div>
+    <?php endif ?>
   </form>
   <span>Don't have an account? <a href="register.php">Register Here</a></span>
 </div>

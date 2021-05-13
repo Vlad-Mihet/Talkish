@@ -53,7 +53,6 @@ if (isset($_GET['blog_id'])) {
 
 <?php if ($data) :  ?>
   <div class="form__container">
-    </h2>
     <form method="post">
       <div class="wrapper">
         <label for="title">Blog Title</label>

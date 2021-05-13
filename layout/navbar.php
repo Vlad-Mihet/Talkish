@@ -71,7 +71,8 @@ function isLoggedIn()
           user_id
         },
         success: function(result) {
-          console.log(result[0].result)
+          console.log(result[0])
+          document.getElementById("num_likes") = result[0].result;
         }
       })
     }
@@ -89,7 +90,8 @@ function isLoggedIn()
           user_id
         },
         success: function(result) {
-          console.log(result[0].result)
+          console.log(result[0])
+          document.getElementById("num_likes") = result[0].result;
         }
       })
     }

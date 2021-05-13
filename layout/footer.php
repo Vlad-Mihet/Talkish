@@ -9,10 +9,10 @@
         <h4>Useful Links</h4>
         <ul>
           <li>
-            <a href="index.php">Home</a>
+            <a href="/index.php">Home</a>
           </li>
           <li>
-            <a href="support.php">Support</a>
+            <a href="/support.php">Support</a>
           </li>
         </ul>
       </div>

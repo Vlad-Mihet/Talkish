@@ -26,7 +26,6 @@ if (isset($_POST['submit'])) {
 
   if ($password !== $confirm_password) {
     $errors['password'] = "Make sure your password matches the confirmation password";
-    echo ('x');
   } else {
     // Check if the email is unique
     if (isUnique($email, $conn)) {
@@ -48,7 +47,6 @@ if (isset($_POST['submit'])) {
       }
     } else {
       $errors['email'] = "That email is already registered.";
-      echo ('y');
     }
   }
 }
@@ -65,6 +63,16 @@ if (isset($_POST['submit'])) {
     <input type="password" name="password" placeholder="Enter Your Password..." />
     <input type="password" name="confirm_password" placeholder="Enter Your Password..." />
     <button type="submit" name="submit">Register</button>
+    <?php if (!empty($errors)) : ?><div class="errors__wrapper">
+        <?php foreach ($errors as $error_type => $error) : ?>
+          <p>
+            <?php if ($errors["$error_type"]) : ?>
+              <?php echo ucfirst($error_type) . " Error: " . $error; ?>
+            <?php endif ?>
+          </p>
+        <?php endforeach ?>
+      </div>
+    <?php endif ?>
   </form>
   <span>Already have an account? <a href="login.php">Login Here</a></span>
 </div>
